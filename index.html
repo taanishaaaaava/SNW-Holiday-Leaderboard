@@ -370,7 +370,7 @@ function renderRows(){
     var jar=need?'<div class="jar"><small>'+c.count+' of '+need+' videos for '+esc(c.tier.name)+'</small><div class="bar"><i style="width:'+pct+'%"></i></div></div>':
       (c.gap?'<div class="jar"><small>Needs about '+usd(c.gap,2)+' more GMV to crack the top 19</small></div>':(!c.hasSales?'<div class="jar"><small>Your first sale puts you on the board</small></div>':''));
     var v=c.vids.slice().sort(function(a,b){return b.date.localeCompare(a.date)}).map(function(x){
-      return '<li class="'+(x.counted?'':'out')+'"><span>'+(x.date||'No date')+(x.counted?'':' · before Nov 1, not counted')+'</span><span>'+usd(x.gmv,2)+' · <a href="'+esc(x.link)+'" target="_blank" rel="noopener">Watch</a></span></li>'}).join('');
+      return '<li class="'+(x.counted?'':'out')+'"><span>'+(x.date||'No date')+(x.counted?'':' · outside the challenge window, not counted')+'</span><span>'+usd(x.gmv,2)+' · <a href="'+esc(x.link)+'" target="_blank" rel="noopener">Watch</a></span></li>'}).join('');
     return '<li class="row '+cls+'" style="animation-delay:'+Math.min(idx,14)*40+'ms"><button class="rb" aria-expanded="false">'+
       '<span class="rk'+(c.rank?'':' off')+'">'+(c.rank||'–')+'</span>'+
       '<span class="av" style="background:'+avColor(c.name)+'">'+esc(c.name.replace(/[^a-z0-9]/gi,'').charAt(0)||'?')+'</span>'+
@@ -413,7 +413,7 @@ function findCreator(){
   var q=$('#fh').value.trim().toLowerCase().replace(/^@/,''),box=$('#fres');
   if(!q){box.className='fres';return}
   var c=state.board.filter(function(x){return x.name.toLowerCase()===q})[0];
-  if(!c){box.className='fres on';box.innerHTML='<div><h4>We can\'t find @'+esc(q)+' yet</h4><ul><li>Only videos posted Nov 1 to Nov 30 with the product link count.</li><li>New videos show up after the next data refresh.</li></ul></div>';return}
+  if(!c){box.className='fres on';box.innerHTML='<div><h4>We can\'t find @'+esc(q)+' yet</h4><ul><li>Only videos of the challenge product with the product link count.</li><li>New videos show up after the next data refresh.</li></ul></div>';return}
   var lines=[];
   if(!c.hasSales)lines.push('Your first sale puts you on the board.');
   else if(c.tier){
@@ -521,7 +521,7 @@ Promise.all([getFirst(['data/config.json','config.json'],'json'),getFirst(['data
   $('#pname').textContent=cfg.productName;
   var r=compute(cfg,vids);state.board=r.list;state.maxG=r.list.length?r.list[0].gmv:0;
   var when=lm?new Date(lm).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):cfg.lastUpdatedFallback;
-  $('#upd').textContent='Last updated '+when+'. Only videos posted Nov 1 to Nov 30 count.';
+  $('#upd').textContent='Last updated '+when+'.';
   renderStats(cfg,r);renderPodium();renderChips(cfg);renderRows();renderPrizes(cfg);
   $('#hl').innerHTML=r.list.map(function(c){return '<option value="@'+esc(c.name)+'">'}).join('');
   var rg=$('#wi');rg.max=Math.max(200,Math.ceil(state.maxG*1.5/50)*50);rg.value=Math.round(rg.max/4/5)*5;whatIf();

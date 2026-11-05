@@ -1,14 +1,42 @@
 {
   "title": "Holiday Candy Challenge",
-  "windowStart": "2026-11-01",
+  "windowStart": "2026-10-30",
   "windowEnd": "2026-11-30",
   "endsAt": "2026-12-01T00:00:00-08:00",
   "productName": "SOUR PATCH KIDS and SWEDISH FISH Holiday Candy Variety Pack",
   "tiers": [
-    { "id": "grand",  "name": "Grand Prize", "prize": 2500, "from": 1,  "to": 1,  "minVideos": 7 },
-    { "id": "gold",   "name": "Gold",        "prize": 1000, "from": 2,  "to": 4,  "minVideos": 7 },
-    { "id": "silver", "name": "Silver",      "prize": 500,  "from": 5,  "to": 9,  "minVideos": 5 },
-    { "id": "bronze", "name": "Bronze",      "prize": 200,  "from": 10, "to": 19, "minVideos": 3 }
+    {
+      "id": "grand",
+      "name": "Grand Prize",
+      "prize": 2500,
+      "from": 1,
+      "to": 1,
+      "minVideos": 7
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "prize": 1000,
+      "from": 2,
+      "to": 4,
+      "minVideos": 7
+    },
+    {
+      "id": "silver",
+      "name": "Silver",
+      "prize": 500,
+      "from": 5,
+      "to": 9,
+      "minVideos": 5
+    },
+    {
+      "id": "bronze",
+      "name": "Bronze",
+      "prize": 200,
+      "from": 10,
+      "to": 19,
+      "minVideos": 3
+    }
   ],
   "excludedVideoIds": [],
   "excludedCreators": [],
